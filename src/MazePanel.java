@@ -5,12 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 public class MazePanel extends javax.swing.JPanel{
 
-    boolean enableEdit= false; 
+    boolean enableEdit= true; 
 
     int mazeSize=16;
     int vectorSize = mazeSize*mazeSize;
@@ -19,12 +18,20 @@ public class MazePanel extends javax.swing.JPanel{
     ImageIcon wallIcon= new ImageIcon(getClass().getResource("tile_1_2.png"));
     ImageIcon flourIcon= new ImageIcon(getClass().getResource("tile_4_1.png"));
     
-    ActionListener al = (ActionEvent e) -> {
-        JButton b = (JButton) e.getSource();
-        System.out.println(b.getActionCommand());
-    };
+    ActionListener al;
 
     MazePanel() {
+        al = (ActionEvent e) -> {
+            JButton b = (JButton) e.getSource();
+            if (enableEdit) {
+                if (b.getIcon().equals(wallIcon)){
+                    b.setIcon(flourIcon);
+                }else{
+                    b.setIcon(wallIcon);
+                }
+            }
+            System.out.println(b.getActionCommand());
+        };
 
         setSize(mazeSize*20, mazeSize*20);
         setLayout(new GridLayout(mazeSize, mazeSize, 0, 0));
@@ -43,14 +50,14 @@ public class MazePanel extends javax.swing.JPanel{
     }
     public void setEditModeON(){
         for (int i = 0; i < vectorSize; i++){
-          buttons[i].enableInputMethods(true);
+          enableEdit=true;
           buttons[i].setBorder(new LineBorder(Color.BLACK));
         }
     }
     
     public void setEditModeOFF(){
         for (int i = 0; i < vectorSize; i++){
-          buttons[i].enableInputMethods(false);
+            enableEdit=false;
           buttons[i].setBorder(null);
         }
     }
