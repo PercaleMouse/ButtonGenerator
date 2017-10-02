@@ -2,8 +2,6 @@
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /*
@@ -19,8 +17,7 @@ import javax.swing.JPanel;
 public class NewMain {
     
        
-        
-           
+         
 
     /**
      * @param args the command line arguments
@@ -29,17 +26,18 @@ public class NewMain {
         javax.swing.JFrame f =  new javax.swing.JFrame(); 
         f.setLayout(new FlowLayout()); 
         f.setDefaultCloseOperation( javax.swing.WindowConstants.EXIT_ON_CLOSE );
-        f.setSize(640,480);
-        JPanel cp = new JPanel();
+        f.setSize(800,640);
+        JPanel cp = new ControlPanel();
         cp.setBorder(BorderFactory.createLineBorder(Color.black));
         f.add(cp);
-        JButton editMazeButton = new JButton("Edit Maze");
-        editMazeButton.setSize(50, 30);
-        cp.add(editMazeButton);
-        
+    
+        //editMazeButton.setSize(50, 30);
         MazePanel mazePanel = new MazePanel();
         f.add(mazePanel);
         f.setVisible(true);
     }
+    
+                                         
+
     
 }

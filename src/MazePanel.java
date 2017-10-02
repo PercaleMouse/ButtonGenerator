@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
@@ -33,8 +34,9 @@ public class MazePanel extends javax.swing.JPanel {
             System.out.println(b.getActionCommand());
         };
 
-        setSize(mazeSize * 20, mazeSize * 20);
+       // setSize(mazeSize * 20, mazeSize * 20);
         setLayout(new GridLayout(mazeSize, mazeSize, 0, 0));
+        setBorder(BorderFactory.createLineBorder(Color.black));
         for (int i = 0; i < vectorSize; i++) {
             buttons[i] = new JButton();
             buttons[i].addActionListener(al);
@@ -43,7 +45,6 @@ public class MazePanel extends javax.swing.JPanel {
             buttons[i].setActionCommand(String.valueOf(i));
             buttons[i].enableInputMethods(false);
             buttons[i].setBorder(null);
-
             add(buttons[i]);
         }
 
